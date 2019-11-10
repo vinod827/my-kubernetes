@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp
+  labels:
+    run: myapplabel
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      run: myapp
+  minReadySeconds: 10
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:      
+      maxSurge: 1
+      maxUnavailable: 0    
+  template:
+    metadata:
+      labels:
+        run: myapp
+    spec:
+      containers:
+      - name: my-kubernetes-app
+        image: vinod827/my-kubernetes:1.4
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 8080
