@@ -1,6 +1,6 @@
 {
   "name": "my-kubernetes",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "My app on Kubernetes",
   "main": "index.js",
   "scripts": {
